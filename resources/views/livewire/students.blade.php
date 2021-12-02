@@ -13,14 +13,13 @@
         @endif
 
 
-        <button wire:click="create()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 my-3" >Nuovo
-        </button>
+        <button wire:click="create()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 my-3" >Nuovo</button>
         @if($modal)
             @include('livewire.crea')
         @endif
 
-        <div class="text-right px-4 py-4">
-            <input type = "text" class="form-control" placeholder="Cerca..." wire:model="searchTerm">
+        <div class="text-right px-5 py-5">
+            <input type = "text" class="form-control border rounded-lg text-gray-700 focus:outline-none focus:border-green-500 px-3 py-3" placeholder="Cerca..." wire:model="searchTerm">
         </div>
         <table class="table-fixed w-full">
         <thead>
@@ -30,7 +29,7 @@
                 <th class="px-4 py-4 break-all">COGNOME</th>
                 <th class="px-4 py-4 break-all">EMAIL</th>
                 <th class="px-4 py-4 break-all">ISCRIZIONE</th>
-                <th class="px-4 py-4 break-all">Genere</th>
+                <th class="px-4 py-4 break-all">GENERE</th>
                 <th class="px-4 py-4 break-all">AZIONE</th>
             </tr>
         </thead>
@@ -50,7 +49,8 @@
             </tr>
             @endforeach
         </tbody>
-    </table>
+        </table>
+
         </div>
     </div>
 </div>

@@ -12,11 +12,12 @@ class Students extends Component
 
 
 
+
     public function render()
     {
-
         $searchTerm = '%'.$this->searchTerm . '%';
-        $this->students = Student::where('nome', 'LIKE', $searchTerm)->get();
+        $this->students = Student::where('nome', 'LIKE', $searchTerm)
+                                ->orwhere('cognome', 'LIKE', $searchTerm)->get();
         return view('livewire.students');
     }
 
@@ -66,14 +67,22 @@ class Students extends Component
     public function save()
     {
 
-        Student::updateOrCreate(['id'=>$this->id_studente],
-        [
-            'nome' => $this->nome,
-            'cognome' => $this->cognome,
-            'email' => $this->email,
-            'anno_iscrizione' => $this->anno_iscrizione,
-            'genere' =>$this->genere
+        $this->validate([
+            'nome' => 'required',
+            'cognome' =>'required',
+            'email' => 'required|email',
+            'anno_iscrizione' => 'required',
+            'genere' => 'required'
         ]);
+
+            Student::updateOrCreate(['id'=>$this->id_studente],
+            [
+                'nome' => $this->nome,
+                'cognome' => $this->cognome,
+                'email' => $this->email,
+                'anno_iscrizione' => $this->anno_iscrizione,
+                'genere' =>$this->genere
+            ]);
 
         session()->flash('message', $this->id_studente ? 'Dati aggiornati con successo' : 'Dati inseriti con successo');
 

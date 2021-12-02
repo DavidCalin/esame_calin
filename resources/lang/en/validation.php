@@ -139,8 +139,21 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'nome' => [
+            'required' => 'Campo nome obbligatorio'
+        ],
+        'cognome' => [
+            'required' => 'Campo cognome obbligatorio'
+        ],
+        'email' => [
+            'required' => 'Campo email obbligatorio',
+            'email'  =>  'Formato email non corretto'
+        ],
+        'anno_iscrizione' => [
+            'required' => 'Campo anno iscrizione obbligatorio'
+        ],
+        'genere' => [
+            'required' => 'Campo genere obbligatorio'
         ],
     ],
 
